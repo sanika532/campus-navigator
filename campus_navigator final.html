@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Campus Navigator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f2f2f2;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      width: 300px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+    .examples {
+      color: gray;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Campus Navigator</h2>
+  <p>Enter the place you want to find:</p>
+  <input type="text" id="searchInput" placeholder="e.g., Library, Canteen" />
+  <br>
+  <button onclick="findLocation()">Find Location</button>
+
+  <div id="result"></div>
+
+  <p class="examples">Examples:<br>- Library<br>- CSE Department<br>- Canteen</p>
+
+  <script>
+    const campusMap = {
+      "Physics Lab": "B Block ,2nd floor",
+      "Canteen": "Opposite to D Block",
+      "Administrattion Office": "B Block ,Ground floor",
+      "Library": "B Block , 2nd Floor",
+      "Makerspace": "B Block , Basement",
+      "Placement Cell": "B Block,Ground Floor",
+      "MCA": "A Block",
+      "AIML Department": "D Block",
+      "Hostel": "E Block",
+      "EEE Department": "C Block , First Floor",
+      "ISE Department": "C Block,Second Floor",
+      "CSE Department": "C Block,Fifth Floor",
+      "President's chamber": "C Block,Ground floor",
+      "Auditorium": "B Block,3rd floor",
+      "ECE Department": "C Block ,3rd floor "
+    };
+
+    function findLocation() {
+      const input = document.getElementById('searchInput').value.trim().toLowerCase();
+
+      let found = false;
+      for (let key in campusMap) {
+        if (key.toLowerCase() === input) {
+          document.getElementById('result').textContent = campusMap[key];
+          found = true;
+          break;
+        }
+      }
+
+      if (!found) {
+        document.getElementById('result').textContent = "Location not found.";
+      }
+    }
+  </script>
+
+</body>
+</html>
